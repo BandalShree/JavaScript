@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="return validate()">
+        Employee Name:<input type="text" required><span></span><br>
+        Employee Code:<input type="number" required><span></span><br>
+        Date:<input type="date" required><span></span><br>
+        <input value="Show Details" type="submit">
+    </form>
+</body>
+<script>
+    const input = document.getElementsByTagName("input")
+    const span = document.getElementsByTagName("span")
+    function validate() {
+        if (/\d+/.test(input[0].value) || input[0].value.length > 10)
+            span[0].innerHTML = 'only alphabets allowed, maximum length is 10'
+        else
+            span[0].innerHTML = ''
+        if (input[1].value.length !== 4)
+            span[1].innerHTML = 'must be of 4 digits'
+        else
+            span[1].innerHTML = ''
+        if (new Date(input[2].value).getTime() > new Date().getTime())
+            span[2].innerHTML = 'Invalid Date'
+        else
+            span[2].innerHTML = ''
+        if(span[0].innerHTML === '' && span[1].innerHTML === '' && span[2].innerHTML === '')
+        {
+            Customer = {}
+            Customer.Employee_Name = input[0].value
+            Customer.Employee_Code = input[1].value
+            Customer.Date = input[2].value
+            localStorage.setItem("object", JSON.stringify(Customer))
+            window.open("./file.html")
+        }
+        return false;
+    }
+</script>
+
+</html>

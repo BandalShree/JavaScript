@@ -1,0 +1,23 @@
+<script>
+    rectangle = {}
+    circle = {}
+    rectangle.len = parseInt(prompt("Enter length of rectangle"))
+    rectangle.bred = parseInt(prompt("Enter breadth of rectangle"))
+    rectangle.area = ()=>{
+        alert("Area of Rectangle is "+rectangle.len*rectangle.bred)
+    }
+    rectangle.perimeter = ()=>{
+        alert("Area of perimeter. is "+2*(rectangle.len+rectangle.bred))
+    }
+    circle.rad = parseInt(prompt("Enter Radius of Circle"))
+    circle.area = ()=>{
+        alert("circle of Rectangle is "+3.14*circle.rad*circle.rad)
+    }
+    circle.perimeter = ()=>{
+        alert("circle of Circumference is "+2*3.14*circle.rad)
+    }
+    rectangle.area()
+    rectangle.perimeter()
+    circle.area()
+    circle.perimeter()
+</script>

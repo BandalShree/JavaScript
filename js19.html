@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <table>
+            <tr>
+                <td>Enter a +ve no less than 1000: </td>
+                <td><input type="number"></td>
+            </tr>
+        </table>
+        <div></div>
+    </form>
+</body>
+<script src="js.js"></script>
+<script>
+    let num = getTag("input")[0]
+    const div = document.getElementsByTagName("div")
+    num.addEventListener("keypress", (event) => {
+        if (event.keyCode === 13) {
+            if (num.value < 0 || num.value === 'e' || num.value > 1000) div[0].innerHTML = "Entered number is out of range"
+            else {
+                sum = 0
+                for (let digit of num.value)
+                    sum += parseInt(digit)
+                div[0].innerHTML = `Sum of the digits of ${num.value} is ${sum}`
+            }
+            event.preventDefault()
+        }
+    })
+</script>
+
+</html>

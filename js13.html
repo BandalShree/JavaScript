@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+
+    </table>
+</body>
+<script src="js.js"></script>
+<script>
+    let emp
+    let empArr = []
+    const table = getTag("table")
+    table[0].innerHTML = "<tr><th>empid</th><th>empname</th><th>salary</th><tr>"
+    for (let i = 0; i < 4; i++) {
+        emp = {}
+        let val = prompt("Enter empid,empname,salary").split(",")
+        if(val.length===3){
+            emp.empid = val[0]
+            emp.empname = val[1]
+            emp.salary = val[2]
+            empArr.push(emp)
+        }
+        else alert("please enter 3 comma seperated values")
+    }
+    for (let i = 0; i < 4; i++) {
+        emp = empArr[i]
+        let tr = document.createElement("tr")
+        let td = document.createElement("td")
+        for(let temp in emp){
+            td.append(emp[temp])
+            tr.append(td)
+            td = document.createElement("td")
+        }
+        table[0].append(tr)
+    }
+</script>
+
+</html>

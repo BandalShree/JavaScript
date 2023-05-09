@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" onsubmit="return fun()">
+        <table>
+            Name: <input type="text" required> <span></span><br>
+            Birth Date: <input type="date" required><br>
+            Email Address: <input type="email" required><br>
+            <tr>
+                <td>
+                    Gender:
+                </td>
+                <td><input type="radio" id="male" name="gender" value="male" checked>
+                    <label for="male">male</label><br>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">female</label><br>
+                </td>
+                Lucky Number: <input type="number" id="num" required><span></span><br>
+            <tr>
+                <td>
+                    Favourite Foods:
+                </td>
+                <td>
+                    <input type="checkbox" id="food1" value="Pizza" class="checkbox" checked>
+                    <label for="food1"> Pizza</label><br>
+                    <input type="checkbox" id="food2" value="Pasta" class="checkbox">
+                    <label for="food2"> Pasta</label><br>
+                    <input type="checkbox" id="food3" value="Chinese" class="checkbox">
+                    <label for="food3"> Chinese</label><br>
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Send Data</button>
+
+    </form>
+</body>
+<script src="js.js"></script>
+<script>
+    const input = getTag("input")
+    const span = getTag("span")
+    input[0].addEventListener("input", () => {
+        if (input[0].value.length > 10 || String(input[0].value).search(/[^a-zA-Z]+/) !== -1) span[0].innerHTML = "only alphabets allowed, maximum length is 10."
+        else span[0].innerHTML = ""
+    })
+    document.getElementById("num").addEventListener("input", () => {
+        if (document.getElementById("num").value.length !== 4) span[1].innerHTML = "must be of 4 digits."
+        else span[1].innerHTML = ""
+    })
+    function fun(){
+        if (span[0].innerHTML === "" && span[1].innerHTML === "") {
+            obj = {}
+            obj.Name = input[0].value
+            obj.Birth_Date = input[1].value
+            obj.Email_Address = input[2].value
+            obj.Lucky_Number = input[3].value
+            let gender = document.getElementsByName("gender")
+            for(let gen of gender) 
+                if(gen.checked)
+                    obj.Gender = gen.value
+            let checkbox = document.getElementsByClassName("checkbox")
+            let temp=""
+            for(let box of checkbox) 
+                if(box.checked)
+                    temp += box.value+" "             
+            obj.Favourite_Food = temp
+            localStorage.setItem("object", JSON.stringify(obj))
+            window.open("http://127.0.0.1:5501/js/file.html")
+        }
+        return false
+    }
+</script>
+
+</html>

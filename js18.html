@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <table>
+            <tr>
+                <td>Enter String :</td>
+                <td><input type="text"></td>
+                <td>
+                    <div></div>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Sub String :</td>
+                <td><input type="text"></td>
+                <td>
+                    <div></div>
+                </td>
+            </tr>
+            <tr>
+                <td>Replacing with String :</td>
+                <td><input type="text"></td>
+                <td>
+                    <div></div>
+                </td>
+            </tr>
+        </table>
+        <input type="radio" name="str" checked> Search substring in main string
+        <input type="radio" name="str"> To Upper Case
+        <input type="radio" name="str"> To Lower Case
+        <input type="radio" name="str"> Trim spaces
+        <input type="radio" name="str"> Concatenate
+        <input type="radio" name="str"> replace
+        <br>
+        <button type="button">Submit Query</button>
+        <div></div>
+    </form>
+</body>
+<script src="js.js"></script>
+<script>
+    getTag("button")[0].addEventListener("click", () => {
+        let arr = [...document.getElementsByName("str")]
+        arr.forEach(i => {
+            if (i.checked === true)
+                arr = arr.indexOf(i)
+        })
+        const input = getTag("input")
+        const str = input[0].value
+        const subStr = input[1].value
+        const repStr = input[2].value
+        const div = getTag("div")
+        switch (arr) {
+            case 0:
+                if (str === "") div[0].innerHTML = "String is Empty"
+                if (subStr === "") div[1].innerHTML = "SubString is Empty"
+                if (str !== "" && subStr !== "") div[3].innerHTML = (str.search(subStr) === 1) ? "String Exist" : "String Does not Exist"
+                break
+            case 1:
+                if (str === "") div[0].innerHTML = "String is Empty"
+                if (str !== "") div[3].innerHTML = str.toUpperCase()
+                break
+            case 2:
+                if (str === "") div[0].innerHTML = "String is Empty"
+                if (str !== "") div[3].innerHTML = str.toLowerCase()
+                break
+            case 3:
+                if (str === "") div[0].innerHTML = "String is Empty"
+                if (str !== "") div[3].innerHTML = str.trim()
+                break
+            case 4:
+                if (str === "") div[0].innerHTML = "String is Empty"
+                if (subStr === "") div[1].innerHTML = "SubString is Empty"
+                if (str !== "" && subStr !== "") div[3].innerHTML = str.concat(subStr)
+                break
+            case 5:
+                if (str === "") div[0].innerHTML = "String is Empty"
+                if (subStr === "") div[1].innerHTML = "SubString is Empty"
+                if (repStr === "") div[2].innerHTML = "Replace String is Empty"
+                if (str !== "" && subStr !== "" && repStr !== "") div[3].innerHTML = str.replace(subStr, repStr)
+                break
+        }
+        if (str !== "") div[0].innerHTML = ""
+        if (subStr !== "") div[1].innerHTML = ""
+        if (repStr !== "") div[2].innerHTML = ""
+    })
+</script>
+
+</html>

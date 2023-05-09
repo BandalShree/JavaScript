@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" onsubmit="return fun()">
+        <table>
+            <tr>
+                <td>Username :</td>
+                <td><input type="text" required></td>
+                <td>
+                    <div></div>
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" required></td>
+                <td>
+                    <div></div>
+                </td>
+            </tr>
+        </table>
+        <button type="submit">submit</button>
+    </form>
+</body>
+<script src="js.js"></script>
+<script>
+    const input = getTag("input")
+    const div = getTag("div")
+    input[0].addEventListener("input", () => {
+        if (input[0].value.length < 6 || input[0].value.length > 10 || String(input[0].value).search(/[^a-zA-Z]+/) !== -1) div[0].innerHTML = "Username must be between 6 to 10 characters, all alphabetic."
+        else div[0].innerHTML = ""
+    })
+    input[1].addEventListener("input", () => {
+        if (input[1].value.length <= 8 || !String(input[1].value).includes("#") || String(input[1].value).match(/[0-9]/) === null) div[1].innerHTML = "Password should be greater than 8 characters, must contain a # and atleast one digit."
+        else div[1].innerHTML = ""
+    })
+    function fun() {
+        if (div[0].innerHTML === "" && div[1].innerHTML === "") return true
+        return false
+    }
+</script>
+
+</html>

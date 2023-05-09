@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            color:red
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" onsubmit="return fun()">
+        Order ID : <input type="number" required><br>
+        Cust name : <input type="text" required> <span></span><br>
+        Enter Billing date : <input type="date" required><span></span><br>
+        Enter Shipping date : <input type="date" required><br>
+        Order total : <input type="number" required><br>
+        <button type="submit">display</button>
+    </form>
+    <div></div>
+</body>
+
+<script src="js.js"></script>
+<script>
+    const input = getTag("input")
+    const span = getTag("span")
+    input[1].addEventListener("blur", () => {
+        if (input[1].value.length <= 5) span[0].innerHTML = "Cust name must be greater than 5 characters."
+        else span[0].innerHTML = ""
+    })
+    validDate = () => {
+        const date1 = new Date(input[2].value).getTime();
+        const date2 = new Date(input[3].value).getTime();
+        if (date1 > date2) span[1].innerHTML = "Billing date must be lesser than shipping date"
+        else span[1].innerHTML = ""
+    }
+    
+    input[2].addEventListener("blur", validDate)
+    input[3].addEventListener("blur", validDate)
+    
+    function fun() {
+        if (span[0].innerHTML !== "" || span[1].innerHTML !== "") return false
+        obj = {}
+        obj.Order_id = input[0].value
+        obj.Cust_name = input[1].value
+        obj.Billing_date = input[2].value
+        obj.Shipping_date = input[3].value
+        obj.Order_total = input[4].value
+        localStorage.setItem("object", JSON.stringify(obj))
+        window.open("http://127.0.0.1:5501/js/file.html")
+        // getTag("div")[0].innerHTML = `<div>Order id : ${obj.id}</div><br>
+        // <div>Cust name : ${obj.name}</div><br>
+        // <div>Billing date : ${obj.billDate}</div><br>
+        // <div>Shipping date : ${obj.shippDate}</div><br>
+        // <div>Order total : ${obj.total}</div><br>`
+        return false
+    }
+</script>
+</html>

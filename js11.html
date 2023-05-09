@@ -1,0 +1,9 @@
+<script>
+    function getWeekDay(date){
+        const days = ["Sun","Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
+        return days[date.getDay()]
+    }
+
+    let date = new Date(2012, 0, 3)
+    alert(getWeekDay(date))
+</script>

@@ -1,0 +1,10 @@
+<script>
+    let arr = ["hey", "hello", "no", "yes", "ok"]
+    for (let word of arr) {
+        let rev = ""
+        for (let i = word.length - 1; i >= 0; i--)
+            rev += word[i]
+        arr[arr.indexOf(word)] = rev
+    }
+    alert(arr.sort())
+</script>

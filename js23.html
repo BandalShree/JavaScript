@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Enter Loan Information</h3>
+    <form action="" onsubmit="return fun()">
+        <table>
+            <tr>
+                <td>1) Amount of loan(any currancy):</td>
+                <td><input type="number" required></td>
+                <td>
+                    <div></div>
+                </td>
+            </tr>
+            <tr>
+                <td>2) Annual percentage rate of interest:</td>
+                <td><input type="number" required></td>
+            </tr>
+            <tr>
+                <td>3) Repayment period in years:</td>
+                <td><input type="number" required></td>
+                <td>
+                    <div></div>
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Compute</button>
+        <!-- <button type="submit"></button> -->
+    </form>
+    <h3>Payment Information</h3>
+    <table>
+        <tr>
+            <td>4) Your monthly payment will be:</td>
+            <td><input type="number" readonly></td>
+        </tr>
+        <tr>
+            <td>5) Your total payment will be:</td>
+            <td><input type="number" readonly></td>
+        </tr>
+        <tr>
+            <td>6) Your total interest payments will be:</td>
+            <td><input type="number" readonly></td>
+        </tr>
+    </table>
+</body>
+<script src="js.js"></script>
+<script>
+    const input = getTag("input")
+    const div = getTag("div")
+
+    function fun(){
+        input[3].value = ""
+        input[4].value = ""
+        input[5].value = ""
+        if (parseInt(input[0].value) > 1500000) div[0].innerHTML = "Amount of Loan should not be more than 15 lakhs."
+        else div[0].innerHTML = ""
+        if (parseInt(input[2].value) <= 7 || parseInt(input[2].value) >= 15) div[1].innerHTML = "Repayment period should be between 7 yrs to 15 yrs."
+        else div[1].innerHTML = ""
+        if (div[0].innerHTML === "" && div[1].innerHTML === "") {
+            input[4].value = parseFloat(input[0].value) + parseFloat(input[0].value) * parseFloat(input[1].value) * parseFloat(input[2].value) / 100
+            input[3].value = input[4].value / ( 12 * parseFloat(input[2].value))
+            input[5].value = (input[4].value - parseFloat(input[0].value)) / parseFloat(input[0].value) * 100
+        }
+        input[0].focus()
+        return false
+    }
+</script>
+
+</html>

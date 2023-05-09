@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>Lorem ipsum dolor “training” sit amet consectetur adipisicing elit. Sapiente commodi nemo praesentium deleniti
+        vel error veritatis rem velit sequi earum accusantium illo, quo minima dolorum aperiam, exercitationem magni
+        voluptatem. Sit?</div>
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente commodi nemo praesentium deleniti vel error
+        veritatis rem velit sequi earum accusantium illo, quo minima dolorum aperiam, exercitationem magni voluptatem.
+        Sit?</div>
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente commodi “training” nemo praesentium deleniti
+        vel error veritatis rem velit sequi earum accusantium illo, quo minima dolorum aperiam, exercitationem magni
+        voluptatem. Sit?</div>
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente commodi nemo praesentium deleniti vel error
+        veritatis rem velit sequi earum accusantium illo, quo minima dolorum aperiam, exercitationem magni voluptatem.
+        Sit?</div>
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente commodi nemo praesentium deleniti vel error
+        veritatis rem “training”velit sequi earum accusantium illo, quo minima dolorum aperiam, exercitationem magni
+        voluptatem. Sit?</div>
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente commodi nemo praesentium deleniti vel error
+        veritatis rem velit sequi earum accusantium illo, quo minima dolorum aperiam, exercitationem magni voluptatem.
+        Sit?</div>
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente commodi nemo praesentium deleniti vel error
+        veritatis rem velit sequi earum accusantium illo, quo “training” minima dolorum aperiam, exercitationem magni
+        voluptatem. Sit?</div>
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente commodi nemo praesentium deleniti vel error
+        veritatis rem velit sequi earum accusantium illo, quo minima dolorum aperiam, exercitationem magni voluptatem.
+        Sit?</div>
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente commodi nemo praesentium deleniti vel error
+        veritatis rem velit sequi earum accusantium illo, quo minima dolorum aperiam, exercitationem magni voluptatem.
+        Sit?</div>
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente commodi nemo praesentium deleniti vel error
+        veritatis rem velit sequi earum accusantium illo, quo minima dolorum aperiam, exercitationem magni voluptatem.
+        Sit?“training”</div>
+    <button>search</button>
+</body>
+<script src="js.js"></script>
+<script>
+    getTag("button")[0].addEventListener("click", () => {
+        [...getTag("div")].forEach(element => {
+            if(String(element.innerHTML).includes("training")){
+                let div = document.createElement("div")
+                div.append(String(element.innerHTML))
+                getTag("body")[0].append(div)
+            }
+            
+        });
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>Number : </td>
+            <td><input type="number"></td>
+        </tr>
+        <tr>
+            <td>sum : </td>
+            <td><input type="number" readonly></td>
+        </tr>
+    </table>
+    <button>print</button>
+</body>
+<script src="js.js"></script>
+<script>
+    const input = getTag("input")
+    getTag("button")[0].addEventListener("click", () => {
+        const num = input[0].value
+        if (num.length === 5) {
+            let val = 0
+            for (let i of num)
+                val += parseInt(i)
+            input[1].value = val
+        }
+        else
+            alert("Enter 5 digit number only")
+    })
+</script>
+
+</html>

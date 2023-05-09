@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>Number1 </td>
+            <td><input type="Number"></td>
+        </tr>
+        <tr>
+            <td>Number2 </td>
+            <td><input type="Number"></td>
+        </tr>
+        <tr>
+            <td>Number3 </td>
+            <td><input type="Number"></td>
+        </tr>
+        <tr>
+            <td>Largest Number </td>
+            <td><input type="text" readonly></td>
+        </tr>
+    </table>
+    <button>click</button>
+</body>
+<script src="js.js"></script>
+<script>
+    const input = getTag("input")
+    input[3].value = ""
+    getTag("button")[0].addEventListener("click", () => {
+        const num1 = parseInt(input[0].value)
+        const num2 = parseInt(input[1].value)
+        const num3 = parseInt(input[2].value)
+        input[3].value = num1 > num2 ? num1 > num3 ? num1 : num2 > num3 ? num2 : num3 : num2 > num3 ? num2 : num3
+    })
+
+</script>
+
+</html>

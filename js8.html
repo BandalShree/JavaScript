@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>Base : </td>
+            <td><input type="number"></td>
+        </tr>
+        <tr>
+            <td>Power: </td>
+            <td><input type="number"></td>
+        </tr>
+        <tr>
+            <td>Result: </td>
+            <td><input type="number" readonly></td>
+        </tr>
+    </table>
+    <button>Calculate</button>
+
+</body>
+<script src="js.js"></script>
+<script>
+    let arr = [];
+    const input = getTag("input")
+    getTag("button")[0].addEventListener("click", () => {
+        let num1 = input[0].value;
+        let num2 = input[1].value;
+        if (num2 === '0')
+            num1 = 1;
+        else {
+            while (--num2)
+                num1 *= num1;
+        }
+        input[2].value = num1;
+        num1 = "";
+        num2 = "";
+
+        num1.focus();
+
+    })
+</script>
+
+</html>

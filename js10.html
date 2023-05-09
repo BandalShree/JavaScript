@@ -1,0 +1,17 @@
+<script>
+    const date = new Date();
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let daysMonth = [31,28,31,30,31,30,31,31,30,31,30,31]
+    const year = date.getFullYear()
+    daysMonth[1] = (year%400===0)?29:(year%100===0)?28:(year%4===0)?29:28
+    const month = date.getMonth()
+    let totalDays = 0
+    const currDate = date.getDate()
+    for(let i=month;i<12;i++) totalDays+=daysMonth[i]
+    totalDays-=parseInt(currDate)
+    const time = date.getHours()
+    const day = (time>=5 && time<=12)?'Morning':(time>=12 && time<=17)?'Afternoon':(time>=17 && time<=21)?'Evening':'Night'
+    alert(`Today is ${days[date.getDay()]}, ${currDate} ${months[month]} ${year}, Welcome, and Good ${day} to You. Number of days left till end of year : ${totalDays}`)
+
+</script>

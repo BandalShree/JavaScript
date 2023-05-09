@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>principle: </td>
+            <td><input type="number"></td>
+        </tr>
+        <tr>
+            <td>Interest: </td>
+            <td><input type="number" ></td>
+        </tr>
+        <tr>
+            <td>No. of Years: </td>
+            <td><input type="number" ></td>
+        </tr>
+        <tr>
+            <td>CI: </td>
+            <td><input type="number" readonly></td>
+        </tr>
+    </table>
+    <button>Calculate</button>
+    
+</body>
+<script src="js.js"></script>
+<script>
+    let arr=[];
+    const input = getTag("input")
+    getTag("button")[0].addEventListener("click", () => {
+        let p=parseFloat(input[0].value);
+        let r=parseFloat(input[1].value);
+        let n=parseFloat(input[2].value);
+
+        let ci=(p*Math.pow((1+r/100),n))-p;
+       
+        input[3].value=parseInt(ci);
+        num1="";
+        num2="";
+        num3="";
+
+        num1.focus();
+     
+    })
+</script>
+</html>
